@@ -3,7 +3,8 @@
   <div class="header">
     <ul>
       <li><a href="{{ route('home') }}">HOME</a></li>
-      <li><a href="{{ route('comics.index') }}">COMICS</a></li>
+      <li><a href="{{ route('comics.index') }}">LISTA COMICS</a></li>
+      <li><a href="{{ route('comics') }}">VISTA COMICS</a></li>
       <li><a href="{{ route('movies') }}">MOVIES</a></li>
       <li><a href="">TV</a></li>
       <li><a href="">GAMES</a></li>
