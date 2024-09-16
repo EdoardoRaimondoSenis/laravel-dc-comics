@@ -30,7 +30,18 @@ class ComicController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $requests = $request->all();
+        $newComic = new Comic();
+        $newComic->title = $requests['title'];
+        $newComic->description = $requests['description'];
+        $newComic->thumb = $requests['thumb'];
+        $newComic->price = $requests['price'];
+        $newComic->series = $requests['series'];
+        $newComic->sale_date = $requests['sale_date'];
+        $newComic->type = $requests['type'];
+        $newComic->save();
+
+        return redirect()->route('comics.show', $newComic->id);
     }
 
     /**
