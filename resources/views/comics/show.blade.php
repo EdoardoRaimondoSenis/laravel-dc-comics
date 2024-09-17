@@ -21,7 +21,10 @@
     </div>
     <div class="col text-center">
         <img class="img-fluid" alt="Responsive image" src="{{ $comic->thumb }}" alt="">
-    </div>   
+    </div>
+    <div class="col text-center">
+        <a class="btn btn-primary" href="{{ route('comics.index') }}" role="button">Torna indietro</a>
+    </div>
 </div>
 
 @endsection

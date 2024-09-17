@@ -30,6 +30,7 @@
                 <td>{{ $comic->sale_date }}</td>
                 <td>{{ $comic->type }}</td>
                 <td><a class="btn btn-primary" href="{{ route('comics.show', $comic) }}" role="button">Vedi</a></td>
+                <td><a class="btn btn-warning" href="{{ route('comics.edit', $comic) }}" role="button">Modifica</a></td>
             </tr>
             @endforeach
         </tbody>

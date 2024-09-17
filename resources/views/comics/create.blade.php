@@ -34,7 +34,7 @@
           <label for="exampleFormControlTextarea1">DESCRIZIONE</label>
           <textarea name="description" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
         </div>
-        <button class="btn btn-primary" type="submit">Submit form</button>
+        <button class="btn btn-primary" type="submit">Aggiungi</button>
       </form>
 </div>
 
