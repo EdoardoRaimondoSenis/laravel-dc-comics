@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Comic;
 use Illuminate\Http\Request;
+use Symfony\Contracts\Service\Attribute\Required;
 
 class ComicController extends Controller
 {
@@ -30,18 +31,30 @@ class ComicController extends Controller
      */
     public function store(Request $request)
     {
-        $requests = $request->all();
-        $newComic = new Comic();
-        $newComic->title = $requests['title'];
-        $newComic->description = $requests['description'];
-        $newComic->thumb = $requests['thumb'];
-        $newComic->price = $requests['price'];
-        $newComic->series = $requests['series'];
-        $newComic->sale_date = $requests['sale_date'];
-        $newComic->type = $requests['type'];
-        $newComic->save();
+        $request->validate([
+            'title' => 'required|string|min:3|max:80',
+            'description' => 'required|string',
+            'thumb' => 'required|url',
+            'price' => 'required|string|max:4',
+            'series' => 'required|string|max:80',
+            'sale_date' => 'required|date',
+            'type' => 'required|string|max:40',
+        ],[
+            'title.min' => 'deve contenere un minimo di :min caratteri',
+            'title.max' => 'puo\' contenere un massimo di :max caratteri',
+            'title.required' => 'il titolo e\' obbligatorio',
+            'description.required' => 'la descrizione e\' obbligatoria',
+            'thumb.required' => 'l\' immagine e\' obbligatoria',
+            'price.required' => 'il prezzo e\' obbligatorio',
+            'price.max' => 'puo\' contenere un massimo di :max caratteri',
+            'series.required' => 'il nome di saga di provenienza e\' obbligatorio',
+            'series.max' => 'puo\' contenere un massimo di :max caratteri',
+            'sale_date.required' => 'la data di uscita e\' obbligatoria',
+            'type.required' => 'il  tipo e\' obbligatorio',
+            'type.max' => 'puo\' contenere un massimo di :max caratteri',
+        ]);
 
-        return redirect()->route('comics.show', $newComic->id);
+        
     }
 
     /**
@@ -81,5 +94,10 @@ class ComicController extends Controller
     {
         $comic->delete();
         return redirect()->route('comics.index');
+    }
+
+    public function validate(Request $request, array $rules, array $messages = [], array $attributes = [])
+    {
+        
     }
 }

@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container my-5">
-    <h1>Modifica Comic</h1>
+    <h1>Modifica {{ $comic->title }}</h1>
     <form action="{{ route('comics.update', $comic)}}" method="POST">
         @csrf
         @method('PUT')
@@ -35,6 +35,7 @@
           <textarea name="description" class="form-control" id="exampleFormControlTextarea1" rows="3">{{ $comic->description }}</textarea>
         </div>
         <button class="btn btn-warning mt-3" type="submit">Modifica</button>
+        <a class="btn btn-primary mt-3" href="{{ route('comics.index') }}" role="button">Annulla</a>
       </form>
 </div>
 
